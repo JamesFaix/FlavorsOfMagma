@@ -1,20 +1,17 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Linq;
+using NUnit.Framework;
+using PropertyTest = FsCheck.NUnit.PropertyAttribute;
+ 
 namespace FlavorsOfMagma.PropertyTesting
 {
-    [TestFixture]
     public class TestClass
     {
-        [Test]
-        public void TestMethod()
+        [PropertyTest(QuietOnSuccess = true)]
+        public void ConcatIsAssociative(int[] xs, int[] ys, int[] zs)
         {
-            // TODO: Add your test code here
-            Assert.Pass("Your first passing test");
+            Assert.AreEqual(
+                xs.Concat(ys).Concat(zs),
+                xs.Concat(ys.Concat(zs)));
         }
     }
 }
