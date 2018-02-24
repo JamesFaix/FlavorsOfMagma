@@ -1,4 +1,4 @@
-﻿namespace FlavorsOfMagma
+﻿namespace FlavorsOfMagma.Interfaces
 {
     interface IMagma<T>
     {

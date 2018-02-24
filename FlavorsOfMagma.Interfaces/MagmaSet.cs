@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace FlavorsOfMagma
+namespace FlavorsOfMagma.Interfaces
 {
     class MagmaSet<T> : IMagma<MagmaSet<T>>
     {

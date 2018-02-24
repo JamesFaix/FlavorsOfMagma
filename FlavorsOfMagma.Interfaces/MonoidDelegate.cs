@@ -1,4 +1,4 @@
-﻿namespace FlavorsOfMagma
+﻿namespace FlavorsOfMagma.Interfaces
 {
     delegate T MonoidDelegate<T>(T a, T b);
 

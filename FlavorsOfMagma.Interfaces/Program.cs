@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FlavorsOfMagma
+namespace FlavorsOfMagma.Interfaces
 {
     static class Program
     {
