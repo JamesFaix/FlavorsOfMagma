@@ -58,6 +58,8 @@ namespace FlavorsOfMagma.PropertyTesting
         [PropertyTest]
         public void RemoveFromEndIsTheInverseOfStringConcat(string str1, string str2)
         {
+            //Fails because null is coerced into "" by concat
+
             Assert.AreEqual(
                 (str1 + str2).RemoveFromEnd(str2),
                 str1);

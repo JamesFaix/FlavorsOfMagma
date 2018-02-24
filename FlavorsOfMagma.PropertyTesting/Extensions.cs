@@ -7,8 +7,17 @@ namespace FlavorsOfMagma.PropertyTesting
     {
         public static string RemoveFromEnd(this string source, string toRemove)
         {
+            if (source == null)
+            {
+                return null;
+            }
+            if (toRemove == null)
+            {
+                return source;
+            }
+
             var len = toRemove.Length;
-            var matchStartIndex = source.Length - len - 1;
+            var matchStartIndex = source.Length - len;
             if (matchStartIndex >= 0)
             {
                 var match = source.Substring(matchStartIndex, len);
@@ -27,7 +36,7 @@ namespace FlavorsOfMagma.PropertyTesting
             var sourceLen = sourceList.Count;
             var toRemoveLen = toRemoveList.Count;
 
-            var matchStartIndex = sourceLen - toRemoveLen - 1;
+            var matchStartIndex = sourceLen - toRemoveLen;
             if (matchStartIndex >= 0)
             {
                 var match = sourceList.Skip(matchStartIndex).Take(toRemoveLen);
