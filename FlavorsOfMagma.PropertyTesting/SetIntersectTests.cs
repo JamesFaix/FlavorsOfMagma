@@ -7,6 +7,8 @@ namespace FlavorsOfMagma.PropertyTesting
 {
     public class SetIntersectTests
     {
+        //All of these test fail if a null sequence is passed to Intersect
+
         [PropertyTest]
         public void SetIntersectIsAssociative(int[] a, int[] b, int[] c)
         {

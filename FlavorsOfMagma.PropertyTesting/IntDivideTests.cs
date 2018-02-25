@@ -15,7 +15,7 @@ namespace FlavorsOfMagma.PropertyTesting
                 a / (b / c));
         }
 
-        [Ignore("Fails for most arguments")]
+        [Ignore("Fails except when both arguments are 1")]
         public void IntDivideIsCommutative(int a, int b)
         {
             Assert.AreEqual(
@@ -33,7 +33,7 @@ namespace FlavorsOfMagma.PropertyTesting
                 a);
         }
 
-        [Ignore("Fails for most arguments")]
+        [Ignore("Fails except when a is 1")]
         public void OneIsTheLeftIdentityOfIntDivide(int a)
         {
             var id = 1;
@@ -43,7 +43,7 @@ namespace FlavorsOfMagma.PropertyTesting
                 a);
         }
 
-        [Ignore("Fails for most arguments because integer division rounds")]
+        [Ignore("Fails except when a % b == 0 because integer division rounds")]
         public Property MultiplicationIsTheInverseOfIntDivide(int a, int b)
         {
             Func<bool> property = () => 

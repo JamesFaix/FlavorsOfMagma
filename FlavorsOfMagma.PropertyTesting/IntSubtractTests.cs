@@ -13,7 +13,7 @@ namespace FlavorsOfMagma.PropertyTesting
                 a - (b - c));
         }
 
-        [Ignore("Fails for most arguments")]
+        [Ignore("Fails except when both arguments are 0")]
         public void IntSubtractIsCommutative(int a, int b)
         {
             Assert.AreEqual(
@@ -31,7 +31,7 @@ namespace FlavorsOfMagma.PropertyTesting
                 a);
         }
 
-        [Ignore("Fails for most arguments")]
+        [Ignore("Fails except when a is 0")]
         public void ZeroIsTheLeftIdentityOfIntSubtract(int a)
         {
             var id = 0;

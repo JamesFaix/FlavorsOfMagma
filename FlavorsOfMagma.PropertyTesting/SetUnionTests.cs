@@ -6,6 +6,8 @@ namespace FlavorsOfMagma.PropertyTesting
 {
     public class SetUnionTests
     {
+        //All of these tests fail if a null sequence is passed to Union
+
         [PropertyTest]
         public void SetUnionIsAssociative(int[] a, int[] b, int[] c)
         {

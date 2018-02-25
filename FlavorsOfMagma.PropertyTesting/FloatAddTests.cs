@@ -7,15 +7,15 @@ namespace FlavorsOfMagma.PropertyTesting
 {
     class FloatAddTests
     {
-        private const float comparisonDelta = 0.0001f;
+        private const float comparisonDelta = 0.00001f;
 
         [PropertyTest]
-        public Property FloatAddIsAssociative(float a, float b, float c)
+        public Property FloatAddIsUsuallyAssociative(float a, float b, float c)
         {
             Func<bool> property = () => 
                 ((a + b) + c).IsCloseTo(a + (b + c), comparisonDelta);
 
-            return property.When(a.IsFiniteNumber() && b.IsFiniteNumber() && c.IsFiniteNumber());
+            return property.When((a+b).IsFiniteNumber() && (a+b+c).IsFiniteNumber());
         }
 
         [PropertyTest]
@@ -41,12 +41,14 @@ namespace FlavorsOfMagma.PropertyTesting
         }
 
         [PropertyTest]
-        public Property SubtractionIsTheInverseOfFloatAdd(float a, float b)
+        public Property SubtractionIsUsuallyTheInverseOfFloatAdd(float a, float b)
         {
+            Console.WriteLine($"a: {a}, b: {b}");
+
             Func<bool> property = () => 
                 ((a + b) - b).IsCloseTo(a, comparisonDelta);
 
-            return property.When(a.IsFiniteNumber() && b.IsFiniteNumber());
+            return property.When(a.IsFiniteNumber() && b.IsFiniteNumber() && (a+b).IsFiniteNumber());
         }
     }
 }

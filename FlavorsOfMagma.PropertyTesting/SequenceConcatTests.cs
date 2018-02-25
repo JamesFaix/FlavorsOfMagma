@@ -6,6 +6,8 @@ namespace FlavorsOfMagma.PropertyTesting
 {
     public class SequenceConcatTests
     {
+        //All of these tests fail if a null sequence is passed into Concat
+
         [PropertyTest]
         public void SequenceConcatIsAssociative(int[] a, int[] b, int[] c)
         {

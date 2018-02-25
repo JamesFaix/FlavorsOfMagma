@@ -24,7 +24,7 @@ namespace FlavorsOfMagma.PropertyTesting
         }
 
         [PropertyTest]
-        public Property EmptyStringIsTheIdentityOfStringConcat(string a)
+        public Property EmptyStringIsAnIdentityOfStringConcat(string a)
         {
             var id = "";
 
@@ -36,7 +36,7 @@ namespace FlavorsOfMagma.PropertyTesting
         }
 
         [PropertyTest]
-        public Property NullIsTheIdentityOfStringConcat(string a)
+        public Property NullIsAnIdentityOfStringConcat(string a)
         {
             string id = null;
 
