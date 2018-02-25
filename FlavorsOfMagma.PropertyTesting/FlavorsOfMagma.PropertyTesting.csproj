@@ -46,6 +46,14 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BooleanAndTests.cs" />
+    <Compile Include="BooleanOrTests.cs" />
+    <Compile Include="FloatAddTests.cs" />
+    <Compile Include="IntDivideTests.cs" />
+    <Compile Include="IntSubtractTests.cs" />
+    <Compile Include="IntAddTests.cs" />
+    <Compile Include="SetIntersectTests.cs" />
+    <Compile Include="SetUnionTests.cs" />
     <Compile Include="StringConcatTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions.cs" />

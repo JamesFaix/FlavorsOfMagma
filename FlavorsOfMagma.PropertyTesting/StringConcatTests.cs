@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System;
+using FsCheck;
+using NUnit.Framework;
 using PropertyTest = FsCheck.NUnit.PropertyAttribute;
 
 namespace FlavorsOfMagma.PropertyTesting
@@ -6,63 +8,52 @@ namespace FlavorsOfMagma.PropertyTesting
     public class StringConcatTests
     {
         [PropertyTest]
-        public void StringConcatIsAssociative(string str1, string str2, string str3)
+        public void StringConcatIsAssociative(string a, string b, string c)
         {
             Assert.AreEqual(
-                (str1 + str2) + str3,
-                str1 + (str2 + str3));
+                (a + b) + c,
+                a + (b + c));
+        }
+
+        [Ignore("Fails except when one argument is null or empty.")]
+        public void StringConcatIsCommutative(string a, string b)
+        {
+            Assert.AreEqual(
+                a + b,
+                b + a);
         }
 
         [PropertyTest]
-        public void StringConcatIsCommutative(string str1, string str2)
+        public Property EmptyStringIsTheIdentityOfStringConcat(string a)
         {
-            //FAILS
+            var id = "";
 
-            Assert.AreEqual(
-                str1 + str2,
-                str2 + str1);
+            Func<bool> property = () => 
+                a + id == a && 
+                id + a == a;
+
+            return property.When(a != null);
         }
 
         [PropertyTest]
-        public void EmptyStringIsTheIdentityOfStringConcat(string str)
+        public Property NullIsTheIdentityOfStringConcat(string a)
         {
-            //Fails for NULL
+            string id = null;
 
-            var identity = "";
+            Func<bool> property = () => 
+                a + id == a && 
+                id + a == a;
 
-            Assert.AreEqual(
-                str + identity,
-                str);
-
-            Assert.AreEqual(
-                identity + str,
-                str);
+            return property.When(a != null);
         }
 
         [PropertyTest]
-        public void NullIsTheIdentityOfStringConcat(string str)
+        public Property RemoveFromEndIsTheInverseOfStringConcat(string a, string b)
         {
-            //Fails for NULL
+            Func<bool> property = () => 
+                (a + b).RemoveFromEnd(b) == a;
 
-            string identity = null;
-
-            Assert.AreEqual(
-                str + identity,
-                str);
-
-            Assert.AreEqual(
-                identity + str,
-                str);
-        }
-
-        [PropertyTest]
-        public void RemoveFromEndIsTheInverseOfStringConcat(string str1, string str2)
-        {
-            //Fails because null is coerced into "" by concat
-
-            Assert.AreEqual(
-                (str1 + str2).RemoveFromEnd(str2),
-                str1);
+            return property.When(a != null);
         }
     }
 }

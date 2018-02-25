@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FlavorsOfMagma.PropertyTesting
@@ -47,5 +48,15 @@ namespace FlavorsOfMagma.PropertyTesting
             }
             return sourceList.AsEnumerable();
         }
+
+        public static bool IsCloseTo(this float a, float b, float delta)
+        {
+            return Math.Abs(a - b) <= delta;
+        }
+
+        public static bool IsFiniteNumber(this float @this) =>
+            !(float.IsPositiveInfinity(@this) ||
+                float.IsNegativeInfinity(@this) ||
+                float.IsNaN(@this));
     }
 }
