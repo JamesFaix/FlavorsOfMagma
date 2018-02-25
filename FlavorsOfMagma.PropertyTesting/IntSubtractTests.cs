@@ -5,21 +5,17 @@ namespace FlavorsOfMagma.PropertyTesting
 {
     class IntSubtractTests
     {
-        [PropertyTest]
+        [Ignore("Fails for most arguments")]
         public void IntSubtractIsAssociative(int a, int b, int c)
         {
-            //Fails
-
             Assert.AreEqual(
                 (a - b) - c,
                 a - (b - c));
         }
 
-        [PropertyTest]
+        [Ignore("Fails for most arguments")]
         public void IntSubtractIsCommutative(int a, int b)
         {
-            //Fails
-
             Assert.AreEqual(
                 a - b,
                 b - a);
@@ -35,11 +31,9 @@ namespace FlavorsOfMagma.PropertyTesting
                 a);
         }
 
-        [PropertyTest]
+        [Ignore("Fails for most arguments")]
         public void ZeroIsTheLeftIdentityOfIntSubtract(int a)
         {
-            //Fails
-
             var id = 0;
 
             Assert.AreEqual(

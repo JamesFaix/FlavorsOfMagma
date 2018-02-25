@@ -7,21 +7,17 @@ namespace FlavorsOfMagma.PropertyTesting
 {
     class IntDivideTests
     {
-        [PropertyTest]
+        [Ignore("Fails for most arguments")]
         public void IntDivideIsAssociative(int a, int b, int c)
         {
-            //Fails
-
             Assert.AreEqual(
                 (a / b) / c,
                 a / (b / c));
         }
 
-        [PropertyTest]
+        [Ignore("Fails for most arguments")]
         public void IntDivideIsCommutative(int a, int b)
         {
-            //Fails
-
             Assert.AreEqual(
                 a / b,
                 b / a);
@@ -37,11 +33,9 @@ namespace FlavorsOfMagma.PropertyTesting
                 a);
         }
 
-        [PropertyTest]
+        [Ignore("Fails for most arguments")]
         public void OneIsTheLeftIdentityOfIntDivide(int a)
         {
-            //Fails
-
             var id = 1;
 
             Assert.AreEqual(
@@ -49,12 +43,11 @@ namespace FlavorsOfMagma.PropertyTesting
                 a);
         }
 
-        [PropertyTest]
+        [Ignore("Fails for most arguments because integer division rounds")]
         public Property MultiplicationIsTheInverseOfIntDivide(int a, int b)
         {
-            //Fails because integer division rounds
-
-            Func<bool> property = () => (a / b) * b == a;
+            Func<bool> property = () => 
+                (a / b) * b == a;
 
             return property.When(b != 0);
         }
