@@ -49,6 +49,7 @@
     <Compile Include="BooleanAndTests.cs" />
     <Compile Include="BooleanOrTests.cs" />
     <Compile Include="FloatAddTests.cs" />
+    <Compile Include="IntMultiplyTests.cs" />
     <Compile Include="IntDivideTests.cs" />
     <Compile Include="IntSubtractTests.cs" />
     <Compile Include="IntAddTests.cs" />

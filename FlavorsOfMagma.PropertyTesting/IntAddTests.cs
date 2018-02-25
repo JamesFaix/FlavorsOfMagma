@@ -42,5 +42,14 @@ namespace FlavorsOfMagma.PropertyTesting
                 (a + b) - b,
                 a);
         }
+
+
+        [Ignore("Fails for most arguments")]
+        public void AddDistributesOverMultiply(int a, int b, int c)
+        {
+            Assert.AreEqual(
+                a + (b * c),
+                (a + b) * (a + c));
+        }
     }
 }
